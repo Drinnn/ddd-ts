@@ -13,12 +13,11 @@ export default class Customer {
   }
 
   validate() {
-    if (this._name.length === 0) {
-      throw new Error("Name is required");
-    }
-
     if (this._id.length === 0) {
       throw new Error("ID is required");
+    }
+    if (this._name.length === 0) {
+      throw new Error("Name is required");
     }
   }
 
@@ -37,6 +36,14 @@ export default class Customer {
 
   deactivate() {
     this._active = false;
+  }
+
+  isActive(): boolean {
+    return this._active;
+  }
+
+  get name(): string {
+    return this._name;
   }
 
   set address(address: Address) {
