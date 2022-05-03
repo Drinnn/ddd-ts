@@ -9,10 +9,6 @@ export default class OrderService {
   }
 
   static placeOrder(customer: Customer, items: OrderItem[]): Order {
-    if (items.length === 0) {
-      throw new Error("Order must have at least one item");
-    }
-
     const order = new Order(uuid(), customer.id, items);
 
     customer.increaseRewardPoints(order.total() / 2);
