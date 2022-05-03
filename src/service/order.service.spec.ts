@@ -1,8 +1,19 @@
+import Customer from "../entity/customer";
 import Order from "../entity/order";
 import OrderItem from "../entity/order-item";
 import OrderService from "./order.service";
 
 describe("Order Service unit tests", () => {
+  it("should place an order", () => {
+    const customer1 = new Customer("c1", "Customer 1");
+    const orderItem1 = new OrderItem("oi1", "Order Item 1", 100, "p1", 10);
+
+    const order = OrderService.placeOrder(customer1, [orderItem1]);
+
+    expect(customer1.rewardPoints).toBe(500);
+    expect(order.total()).toBe(1000);
+  });
+
   it("should get total of all orders", () => {
     const orderItem1 = new OrderItem("oi1", "Order Item 1", 100, "p1", 1);
     const orderItem2 = new OrderItem("oi2", "Order Item 2", 200, "p2", 3);
