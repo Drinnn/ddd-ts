@@ -235,10 +235,10 @@ describe("Order Repository tests", () => {
     const order2 = new Order("o2", customer.id, [orderItem2, orderItem3]);
     await orderRepository.create(order2);
 
-    // const foundOrders = await orderRepository.findAll();
+    const foundOrders = await orderRepository.findAll();
 
-    // expect(foundOrders).toHaveLength(2);
-    // expect(foundOrders).toContainEqual(order);
-    // expect(foundOrders).toContainEqual(order2);
+    expect(foundOrders).toHaveLength(2);
+    expect(foundOrders).toContainEqual(order);
+    expect(foundOrders).toContainEqual(order2);
   });
 });
