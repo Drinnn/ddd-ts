@@ -31,8 +31,13 @@ export default class Order {
     return true;
   }
 
+  setItems(items: OrderItem[]): void {
+    this._items = items;
+    this._total = this.total();
+  }
+
   total(): number {
-    return this._items.reduce((acc, item) => acc + item.price, 0);
+    return this._items.reduce((acc, item) => acc + item.subTotal, 0);
   }
 
   get id(): string {
